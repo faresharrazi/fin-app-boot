@@ -4,8 +4,8 @@ class Stock < ApplicationRecord
         url = "https://api.finazon.io/latest/finazon/us_stocks_essential/price"
         
         response = HTTParty.get(url, query: { apikey: api_key, ticker: ticker_symbol })
-        puts "Response Body: #{response.body}" # Debug: Print raw response
-        puts "Parsed Response: #{response.parsed_response}" # Debug: Print parsed response
+        # puts "Response Body: #{response.body}" # Debug: Print raw response
+        # puts "Parsed Response: #{response.parsed_response}" # Debug: Print parsed response
       
         # Check if the response contains the price
         if response.success? && response.parsed_response['p']

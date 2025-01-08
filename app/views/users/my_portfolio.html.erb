@@ -1,0 +1,24 @@
+<h3> My portfolio </h3>
+<div class="search-area">
+    <h4> Search Stocks </h4>
+    <%= form_with url: my_portfolio_path, method: :get, local: true do |form| %>
+        <div class="mb-3">
+          <%= form.label :ticker_symbol, "Enter Stock Ticker:", class: "form-label" %>
+          <%= form.text_field :ticker_symbol, required: true, class: "form-control", placeholder: "e.g., AAPL, GOOG, TSLA" %>
+        </div>
+        <%= form.submit "Search", class: "btn btn-primary" %>
+      <% end %>
+      
+      <% if @stock_price %>
+      <% if @stock_price.is_a?(Numeric) %>
+        <div class="alert alert-success mt-3">
+          Stock Price for <%= params[:ticker_symbol].upcase %>: $<%= @stock_price %>
+        </div>
+      <% else %>
+        <div class="alert alert-danger mt-3">
+          <%= @stock_price %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+  
