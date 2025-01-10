@@ -13,7 +13,5 @@ class Stock < ApplicationRecord
         else
           raise "Stock price not found for ticker: #{ticker_symbol}"
         end
-      rescue StandardError => e
-        "Error fetching stock price: #{e.message}"
-      end      
+      end
 end

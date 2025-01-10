@@ -1,0 +1,9 @@
+<% if error_message.present? %>
+  <div class="alert alert-danger mt-3">
+    <%= error_message %>
+  </div>
+<% elsif stock_price.present? %>
+  <div class="alert alert-success mt-3">
+    Stock Price for <%= params[:ticker_symbol].upcase %>: $<%= stock_price %>
+  </div>
+<% end %>
