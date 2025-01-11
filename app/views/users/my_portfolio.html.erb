@@ -1,15 +1,26 @@
-<h3> My Portfolio </h3>
-<div class="search-area">
-  <h4> Search Stocks </h4>
-  <%= form_tag search_stock_path, method: :get, data: { turbo_frame: "results" } do %>
-    <div class="mb-3">
+<h3>My Portfolio</h3>
+<div class="container">
+  <div class="search-area">
+    <h4>Search Stocks</h4>
+    <%= form_tag search_stock_path, method: :get, data: { turbo_frame: "results" } do %>
       <%= label_tag :ticker_symbol, "Enter Stock Ticker:", class: "form-label" %>
-      <%= text_field_tag :ticker_symbol, nil, required: true, class: "form-control", placeholder: "e.g., AAPL, GOOG, TSLA" %>
+      <div class="row g-0 align-items-center">
+        <div class="col-9 col-md-6">
+          <%= text_field_tag :ticker_symbol, nil, required: true, class: "form-control", placeholder: "e.g., AAPL, GOOG, TSLA" %>
+        </div>
+        <div class="col-3 col-sm-3">
+          <%= button_tag type: "submit", class: "btn btn-primary d-flex justify-content-center align-items-center", title: "Search" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row mt-2">
+      <div class="col-9 col-md-6">
+        <turbo-frame id="results">
+          <!-- Turbo frame content will be rendered here -->
+        </turbo-frame>
+      </div>
     </div>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-
-  <turbo-frame id="results">
-  
-  </turbo-frame>
+  </div>
 </div>

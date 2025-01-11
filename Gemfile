@@ -68,3 +68,4 @@ gem "devise", "~> 4.9"
 gem 'iex-ruby-client'
 gem 'httparty'
 gem 'rails-ujs'
+gem "font-awesome-rails"
