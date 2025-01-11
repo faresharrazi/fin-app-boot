@@ -23,4 +23,40 @@
       </div>
     </div>
   </div>
+
+  <div class="user-stocks mt-5">
+    <h4>Your Stocks</h4>
+    <div class="row mt-2">
+      <div class="col-12 col-md-9">
+        <% if current_user.stocks.any? %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Ticker</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_user.stocks.each do |stock| %>
+                <tr>
+                  <td><%= stock.name %></td>
+                  <td><%= stock.ticker %></td>
+                  <td>$<%= stock.last_price %></td>
+                  <td>
+                    <%= button_to portfolios_path(stock_id: stock.id), method: :delete, class: "btn btn-danger d-flex align-items-center", title: "Remove Stock" do %>
+                      <i class="fas fa-trash-alt fa-xs"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>You have no stocks in your portfolio. Use the search above to add stocks.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

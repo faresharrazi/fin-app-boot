@@ -2,8 +2,19 @@
   <div class="alert alert-danger mt-3">
     <%= error_message %>
   </div>
-<% elsif stock_price.present? %>
+<% elsif stock.present? %>
   <div class="alert alert-success mt-3">
-    Stock Price for <%= params[:ticker_symbol].upcase %>: $<%= stock_price %>
+    <p><strong>Stock Ticker:</strong> <%= stock.ticker %></p>
+    <p><strong>Stock Name:</strong> <%= stock.name %></p>
+    <p><strong>Last Price:</strong> $<%= stock.last_price %></p>
+
+    <% if alert_message.present? %>
+      <div class="alert alert-info mt-2">
+        <%= alert_message %>
+      </div>
+    <% else %>
+      <%= link_to "Add to Portfolio", portfolios_path(stock_id: stock.id), class: "btn btn-success mt-2", data: { method: :post } %>
+    <% end %>
   </div>
 <% end %>
+
